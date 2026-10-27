@@ -1,0 +1,21 @@
+<nav th:fragment="navbar" class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+   <span class="navbar-text">
+    <span th:text="${currentUser.username}"></span>
+    <span> with roles [</span>
+
+    <span th:each="role, status : ${currentUser.roles}">
+        <span th:text="${role.name}"></span>
+        <span th:if="${!status.last}">, </span>
+    </span>
+
+    <span>]</span>
+</span>
+
+        <form th:action="@{/logout}" method="post" class="ms-auto">
+            <button type="submit" class="btn btn-outline-light btn-sm">
+                Logout
+            </button>
+        </form>
+    </div>
+</nav>

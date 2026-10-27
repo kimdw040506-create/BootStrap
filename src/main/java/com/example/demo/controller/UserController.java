@@ -42,6 +42,8 @@ public class UserController {
                 userService.findAll()
         );
 
+        model.addAttribute("roles",roleRepository.findAll());
+
         return "users";
     }
 
