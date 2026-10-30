@@ -43,7 +43,7 @@ public class UserController {
         );
 
         model.addAttribute("roles",roleRepository.findAll());
-
+        model.addAttribute("editingUserId", null);
         return "users";
     }
 
@@ -78,8 +78,8 @@ public class UserController {
                     "error.user",
                     "Username alraedy exists"
             );
-
             model.addAttribute("roles", roleRepository.findAll());
+
             return "edit";
         }
 
@@ -114,8 +114,7 @@ public class UserController {
             Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("roles", roleRepository.findAll());
-            return "edit";
+            return returnUsersWithErrors(user, bindingResult, model);
         }
 
         User userWithSameUsername = userRepository
@@ -131,8 +130,7 @@ public class UserController {
                     "Username already exists"
             );
 
-            model.addAttribute("roles", roleRepository.findAll());
-            return "edit";
+            return returnUsersWithErrors(user, bindingResult, model);
         }
         User existingUser = userService.findById(user.getId());
 
@@ -158,5 +156,19 @@ public class UserController {
         userService.delete(id);
 
         return "redirect:/admin";
+    }
+
+    private String returnUsersWithErrors(
+            User user,
+            BindingResult bindingResult,
+            Model model){
+
+        model.addAttribute("users", userService.findAll());
+        model.addAttribute("roles", roleRepository.findAll());
+        model.addAttribute("editingUserId", user.getId());
+        model.addAttribute("editingUser", user);
+        model.addAttribute("fieldErrors", bindingResult.getFieldErrors());
+
+        return "users";
     }
 }

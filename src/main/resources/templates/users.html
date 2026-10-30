@@ -126,63 +126,80 @@
                                         Name
                                     </label>
 
-                                <input type="text"
-                                       class="form-control"
-                                       name="name"
-                                       th:value="${user.name}"
-                                       required>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="name"
+                                           th:value="${editingUserId == user.id ? editingUser.name : user.name}"
+                                           required>
+
+                                    <div th:if="${editingUserId == user.id}">
+
+                                        <div th:each="error : ${fieldErrors}"
+                                             th:if="${error.field == 'name'}"
+                                             class="invalid-feedback d-block"
+                                             th:text="${error.defaultMessage}">
+                                        </div>
+
+                                    </div>
                                 </div>
 
                                 <div class="mb-3">
+                                    <label class="form-label">Surname</label>
 
-                                    <label class="form-label">
-                                        Surname
-                                    </label>
-                                <input type="text"
-                                       class="form-control"
-                                       name="surname"
-                                       th:value="${user.surname}"
-                                       required>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="surname"
+                                           th:value="${editingUserId == user.id ? editingUser.surname : user.surname}"
+                                           required>
+
+                                    <div th:if="${editingUserId == user.id}">
+                                        <div th:each="error : ${fieldErrors}"
+                                             th:if="${error.field == 'surname'}"
+                                             class="invalid-feedback d-block"
+                                             th:text="${error.defaultMessage}">
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+
+                                    <input type="text"
+                                           class="form-control"
+                                           name="username"
+                                           th:value="${editingUserId == user.id ? editingUser.username : user.username}"
+                                           required>
+
+                                    <div th:if="${editingUserId == user.id}">
+                                        <div th:each="error : ${fieldErrors}"
+                                             th:if="${error.field == 'username'}"
+                                             class="invalid-feedback d-block"
+                                             th:text="${error.defaultMessage}">
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="mb-3">
 
                                     <label class="form-label">
                                         Email
                                     </label>
-                                <input type="email"
-                                       class="form-control"
-                                       name="email"
-                                       th:value="${user.email}"
-                                       required>
-                                </div>
 
-                                <div class="mb-3">
-
-                                    <label class="form-label">
-                                        Username
-                                    </label>
-                                <input type="text"
-                                       class="form-control"
-                                       name="username"
-                                       th:value="${user.username}"
-                                       required>
-                                </div>
-
-                                <div class="mb-3">
-
-                                    <label class="form-label">
-                                        New password
-                                    </label>
-
-                                    <input type="password"
+                                    <input type="email"
                                            class="form-control"
-                                           name="newPassword">
+                                           name="email"
+                                           th:value="${editingUserId == user.id ? editingUser.email : user.email}"
+                                           required>
 
-                                    <div class="form-text">
-                                        Leave empty to keep the current password.
+                                    <div th:if="${editingUserId == user.id}">
+
+                                        <div th:each="error : ${fieldErrors}"
+                                             th:if="${error.field == 'email'}"
+                                             class="invalid-feedback d-block"
+                                             th:text="${error.defaultMessage}">
+                                        </div>
+
                                     </div>
-
                                 </div>
 
                                 <div class="mb-3">
@@ -199,7 +216,8 @@
 
                                         <option th:each="role : ${roles}"
                                                 th:value="${role.id}"
-                                                th:text="${role.name}">
+                                                th:text="${role.name}"
+                                                th:selected="${user.roles.![id].contains(role.id)}">
                                         </option>
                                     </select>
                                 </div>
@@ -268,10 +286,8 @@
                                     </div>
 
                                     <div class="mb-3">
+                                        <label class="form-label">Surname</label>
 
-                                        <label class="form-label">
-                                            Surname
-                                        </label>
                                         <input type="text"
                                                class="form-control"
                                                name="surname"
@@ -301,6 +317,18 @@
                                                name="username"
                                                th:value="${user.username}"
                                                readonly>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">New password</label>
+
+                                        <input type="password"
+                                               class="form-control"
+                                               name="newPassword">
+
+                                        <div class="form-text">
+                                            Leave empty to keep the current password.
+                                        </div>
                                     </div>
 
                                     <div class="mb-3">
@@ -346,5 +374,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
+<script th:if="${editingUserId != null}" th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const modalElement = document.getElementById(
+            'editModal-' + /*[[${editingUserId}]]*/ ''
+        );
+
+        if (modalElement) {
+            bootstrap.Modal.getOrCreateInstance(modalElement).show();
+        }
+    });
+</script>
 </body>
 </html>

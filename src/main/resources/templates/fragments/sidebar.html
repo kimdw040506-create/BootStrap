@@ -3,6 +3,7 @@
             <li class="nav-item">
                 <a class="nav-link"
                    th:classappend="${activePage == 'admin'} ? 'active':''"
+                   th:if="${currentUser.roles.![name].contains('ROLE_ADMIN')}"
                    th:href="@{/admin}">
                     Admin
                 </a>
