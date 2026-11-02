@@ -120,9 +120,9 @@
                             </div>
 
                             <div class="modal-body">
-                                <div class="mb-3">
+                                <div class="mb-3 w-50 mx-auto">
 
-                                    <label class="form-label">
+                                    <label class="form-label d-block text-center fw-bold">
                                         Name
                                     </label>
 
@@ -143,8 +143,10 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Surname</label>
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label class="form-label d-block text-center fw-bold">
+                                        Surname
+                                    </label>
 
                                     <input type="text"
                                            class="form-control"
@@ -161,8 +163,10 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Username</label>
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label class="form-label d-block text-center fw-bold">
+                                        Username
+                                    </label>
 
                                     <input type="text"
                                            class="form-control"
@@ -179,9 +183,9 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 w-50 mx-auto">
 
-                                    <label class="form-label">
+                                    <label class="form-label d-block text-center fw-bold">
                                         Email
                                     </label>
 
@@ -198,18 +202,26 @@
                                              class="invalid-feedback d-block"
                                              th:text="${error.defaultMessage}">
                                         </div>
-
                                     </div>
                                 </div>
 
-                                <button type="submit"
-                                        class="btn btn-danger">
-                                    Delete
-                                </button>
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label class="form-label d-block text-center fw-bold">
+                                        New password
+                                    </label>
 
-                                <div class="mb-3">
+                                    <input type="password"
+                                           class="form-control"
+                                           name="newPassword">
 
-                                    <label class="form-label">
+                                    <div class="form-text">
+                                        Leave empty to keep the current password.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 w-50 mx-auto">
+
+                                    <label class="form-label text-center fw-bold">
                                         Roles
                                     </label>
 
@@ -230,13 +242,13 @@
 
                             <div class="modal-footer">
                                 <button type="button"
-                                        class="btn btn-secondary"
+                                        class="btn btn-secondary fw-bold"
                                         data-bs-dismiss="modal">
                                     Close
                                 </button>
 
                                 <button type="submit"
-                                        class="btn btn-primary">
+                                        class="btn btn-primary fw-bold">
                                     Edit
                                 </button>
                             </div>
@@ -277,9 +289,9 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <div class="mb-3">
+                                    <div class="mb-3 w-50 mx-auto">
 
-                                        <label class="form-label">
+                                        <label class="form-label d-block text-center fw-bold">
                                             Name
                                         </label>
 
@@ -290,8 +302,10 @@
                                                readonly>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label">Surname</label>
+                                    <div class="mb-3 w-50 mx-auto">
+                                        <label class="form-label d-block text-center fw-bold">
+                                            Surname
+                                        </label>
 
                                         <input type="text"
                                                class="form-control"
@@ -300,9 +314,9 @@
                                                readonly>
                                     </div>
 
-                                    <div class="mb-3">
+                                    <div class="mb-3 w-50 mx-auto">
 
-                                        <label class="form-label">
+                                        <label class="form-label d-block text-center fw-bold">
                                             Email
                                         </label>
                                         <input type="email"
@@ -312,9 +326,9 @@
                                                readonly>
                                     </div>
 
-                                    <div class="mb-3">
+                                    <div class="mb-3 w-50 mx-auto">
 
-                                        <label class="form-label">
+                                        <label class="form-label d-block text-center fw-bold">
                                             Username
                                         </label>
                                         <input type="text"
@@ -324,21 +338,9 @@
                                                readonly>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label">New password</label>
+                                    <div class="mb-3 w-50 mx-auto">
 
-                                        <input type="password"
-                                               class="form-control"
-                                               name="newPassword">
-
-                                        <div class="form-text">
-                                            Leave empty to keep the current password.
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-
-                                        <label class="form-label">
+                                        <label class="form-label d-block text-center fw-bold">
                                             Roles
                                         </label>
 
@@ -361,6 +363,11 @@
                                             class="btn btn-secondary"
                                             data-bs-dismiss="modal">
                                         Close
+                                    </button>
+
+                                    <button type="submit"
+                                            class="btn btn-danger">
+                                        Delete
                                     </button>
                                 </div>
                             </form>

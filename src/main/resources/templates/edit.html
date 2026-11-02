@@ -46,7 +46,9 @@
                 <div class="row justify-content-md-center">
                     <div class="col-md-4">
                 <p>
-                    <label class="form-label d-block text-center">Name:</label>
+                    <label class="form-label d-block text-center fw-bold">
+                        Name:
+                    </label>
                     <input class="form-control" type="text"
                            th:field="*{name}" required>
                     <span th:if="${#fields.hasErrors('name')}"
@@ -54,7 +56,9 @@
                 </p>
 
                 <p>
-                    <label class="form-label d-block text-center">Surname:</label>
+                    <label class="form-label d-block text-center fw-bold">
+                        Surname:
+                    </label>
                     <input class="form-control" type="text"
                            th:field="*{surname}"
                            required>
@@ -63,7 +67,9 @@
                 </p>
 
                 <p>
-                    <label class="form-label d-block text-center">Email:</label>
+                    <label class="form-label d-block text-center fw-bold">
+                        Email:
+                    </label>
                     <input class="form-control" type="email"
                            th:field="*{email}"
                            required>
@@ -72,7 +78,9 @@
                 </p>
 
                 <p>
-                    <label class="form-label d-block text-center">Username:</label>
+                    <label class="form-label d-block text-center fw-bold">
+                        Username:
+                    </label>
                     <input class="form-control" type="text"
                            th:field="*{username}"
                            required>
@@ -81,21 +89,27 @@
                 </p>
 
                 <p th:if="${user.id == null}">
-                    <label class="form-label d-block text-center">Password:</label>
+                    <label class="form-label d-block text-center fw-bold">
+                        Password:
+                    </label>
                     <input class="form-control" type="password"
                            th:field="*{password}"
                            required>
                 </p>
 
                 <p th:if="${user.id != null}">
-                    <label class="form-label d-block text-center">New password:</label>
+                    <label class="form-label d-block text-center fw-bold">
+                        New password:
+                    </label>
                     <input class="form-control" type="password"
                            name="newPassword">
                     <small>Оставь пустым, чтобы не менять пароль</small>
                 </p>
 
                 <p>
-                    <label class="form-label d-block text-center">Roles:</label>
+                    <label class="form-label d-block text-center fw-bold">
+                        Roles:
+                    </label>
 
                     <select class="form-select" th:field="*{roles}" multiple required>
                         <option th:each="role : ${roles}"
@@ -104,7 +118,7 @@
                         </option>
                     </select>
                 </p>
-                        <div class="text-center">
+                        <div class="text-center fw-bold">
                             <button type="submit" class="btn btn-success">Add New User</button>
                         </div>
 
